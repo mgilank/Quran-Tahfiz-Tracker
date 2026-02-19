@@ -26,6 +26,7 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 data/*.db
 data/*.db-journal
 data/*.db-wal
+data/*.db-shm
 
 # caches
 .eslintcache
