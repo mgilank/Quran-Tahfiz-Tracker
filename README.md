@@ -67,6 +67,69 @@ bun run start
 
 The app will be available at `http://localhost:3000`.
 
+> **No build step required.** Bun executes TypeScript directly, and TailwindCSS is loaded from CDN. `bun run start` is the production command — there is no `bun run build`.
+
+## Deploying to Production
+
+Since there is no build step, deploying is just running `bun run start` with the right environment variables set.
+
+### Environment variables for production
+
+```env
+GOOGLE_CLIENT_ID=your-google-client-id
+GOOGLE_CLIENT_SECRET=your-google-client-secret
+APP_URL=https://your-domain.com
+PORT=3000
+NODE_ENV=production
+```
+
+Update the authorized redirect URI in Google Cloud Console to match your domain:
+
+```
+https://your-domain.com/auth/google/callback
+```
+
+### PM2 (Linux VPS)
+
+```bash
+npm install -g pm2
+
+# Start the app
+pm2 start --name ngaji --interpreter ~/.bun/bin/bun src/index.tsx
+
+# Auto-restart on server reboot
+pm2 save
+pm2 startup
+```
+
+Common PM2 commands:
+
+```bash
+pm2 status          # Check running processes
+pm2 logs ngaji      # Tail logs
+pm2 restart ngaji   # Restart
+pm2 stop ngaji      # Stop
+```
+
+### Docker
+
+```dockerfile
+FROM oven/bun:1
+WORKDIR /app
+COPY package.json bun.lockb ./
+RUN bun install --frozen-lockfile
+COPY . .
+EXPOSE 3000
+CMD ["bun", "run", "start"]
+```
+
+```bash
+docker build -t ngaji .
+docker run -d -p 3000:3000 --env-file .env -v $(pwd)/data:/app/data ngaji
+```
+
+> Mount the `data/` directory as a volume so the SQLite database persists across container restarts.
+
 ## User Roles
 
 | Role | Description |
