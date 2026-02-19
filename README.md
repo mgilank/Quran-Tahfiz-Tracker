@@ -2,6 +2,8 @@
 
 A Quran memorization (tahfiz) and reading (iqra) progress tracking app for communities. Members log their hafalan progress surah by surah, and a leaderboard keeps everyone motivated.
 
+![Quran Tahfiz Tracker](https://imgmu.id/f/ae0c0cc.png)
+
 ## Features
 
 - **Google OAuth** — sign in with Google; new accounts go into a pending state until an admin approves them
