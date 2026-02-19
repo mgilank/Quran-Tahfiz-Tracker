@@ -91,11 +91,13 @@ https://your-domain.com/auth/google/callback
 
 ### PM2 (Linux VPS)
 
+Use the included `ecosystem.config.cjs` to avoid Bun/PM2 compatibility issues:
+
 ```bash
 npm install -g pm2
 
-# Start the app
-pm2 start --name ngaji --interpreter ~/.bun/bin/bun src/index.tsx
+# Start using the ecosystem config
+pm2 start ecosystem.config.cjs
 
 # Auto-restart on server reboot
 pm2 save
@@ -110,6 +112,19 @@ pm2 logs ngaji      # Tail logs
 pm2 restart ngaji   # Restart
 pm2 stop ngaji      # Stop
 ```
+
+### Nginx (reverse proxy)
+
+A sample config is provided in `nginx.conf.example`. Copy and adapt it:
+
+```bash
+sudo cp nginx.conf.example /etc/nginx/sites-available/ngaji
+# Edit: replace your-domain.com, adjust PORT if needed
+sudo ln -s /etc/nginx/sites-available/ngaji /etc/nginx/sites-enabled/
+sudo nginx -t && sudo systemctl reload nginx
+```
+
+The config handles HTTP → HTTPS redirect, SSL termination, and proxying to the Bun app on `PORT`.
 
 ### Docker
 
