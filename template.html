@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tahfiz Community Leaderboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#10b981","primary-dark": "#065f46","primary-light": "#ecfdf5","background": "#f8faf9","surface": "#ffffff",
+                        "border-light": "#e2e8f0",
+                        "text-main": "#1e293b",
+                        "text-secondary": "#64748b",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply bg-background text-text-main font-display;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-border-light bg-white/80 backdrop-blur-md px-4 sm:px-10 py-3">
+<div class="flex items-center gap-4">
+<div class="size-8 text-primary">
+<svg class="w-full h-full" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-text-main text-xl font-bold leading-tight tracking-[-0.015em]">Tahfiz Community</h2>
+</div>
+<div class="hidden md:flex flex-1 justify-end gap-8 items-center">
+<nav class="flex items-center gap-9">
+<a class="text-text-secondary hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Dashboard</a>
+<a class="text-primary text-sm font-semibold leading-normal border-b-2 border-primary pb-0.5" href="#">Leaderboard</a>
+<a class="text-text-secondary hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Groups</a>
+<a class="text-text-secondary hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Settings</a>
+</nav>
+<div class="h-8 w-px bg-border-light"></div>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 text-text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-9 ring-2 ring-border-light" data-alt="User avatar placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDk8ofJZ0a8_cbOO_SM-KMi2iuvvPMNs7HzwWxWn3Px4cY9u3qo4-FSpGcaqgGIJ1CD9tziCwHgNrFNNHMgEQEEYbJRBhtPjguL-OgAe1bG1wAr-rt9O4UQCs9w79J57dK33DUMTiahK69srZ70MuIPLg8GXp0nBd_rqqRldC8-Wj6ulxOpwU-XpFyRvPgz67QFFvMBnuOZCwZjuaSG8Qz2kFWM_a-h0fltEs7IqUHrvthLpscEgUojZxCz-nNiOqUjTSKK2ikbgZQn");'></div>
+</div>
+</div>
+</header>
+<main class="flex-1 flex flex-col items-center w-full px-4 sm:px-6 lg:px-8 py-8 max-w-7xl mx-auto">
+<div class="w-full flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-8">
+<div class="flex flex-col gap-2">
+<h1 class="text-text-main text-3xl md:text-4xl font-black leading-tight tracking-[-0.033em]">Community Leaderboard</h1>
+<p class="text-text-secondary text-base font-normal leading-normal max-w-2xl">Track progress, celebrate milestones, and stay motivated in your Quran memorization journey together.</p>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 bg-white border border-border-light rounded-lg hover:bg-slate-50 transition-colors text-primary-dark text-sm font-bold shadow-sm">
+<span class="material-symbols-outlined text-[20px]">share</span>
+<span>Share Standings</span>
+</button>
+</div>
+<div class="w-full grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 items-end">
+<div class="order-2 md:order-1 relative flex flex-col bg-white border border-border-light rounded-xl p-6 hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-white border border-border-light text-text-secondary text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-base text-slate-400">emoji_events</span> 2nd Place
+            </div>
+<div class="flex flex-col items-center text-center gap-4 mt-2">
+<div class="relative">
+<div class="w-20 h-20 rounded-full p-1 border-2 border-slate-100">
+<div class="w-full h-full rounded-full bg-cover bg-center" data-alt="Profile picture of ranking user" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBW4x41u1sSXIPuv9zNewbJkmSlHNzvkTfMbuopa8aR1iNteo1tEqk4ZEir0NU6y0RNWE6OxucVg-HpcLPuJvw8k8hLSHNbadjtqELa7fLGhIuyHSn3YjaK5hQ-tObWlVgKvvcR1vuVJ_ONmCJs0gk2Wt-krwqmpoeBwDcPZURE0MM3CXs8tJFZjgdOizkBZ6MkhoStkws21ZO70X1vb2bV-8M13GfM0jxNkCvVwADfJaXMAXxfFY6yt2AjcDFo7BeKUXisofpTbZFR");'></div>
+</div>
+<div class="absolute -bottom-1 -right-1 bg-white rounded-full p-1 shadow-sm">
+<span class="material-symbols-outlined text-blue-500 text-xl">verified</span>
+</div>
+</div>
+<div>
+<h3 class="text-text-main text-lg font-bold">Fatima Z.</h3>
+<p class="text-text-secondary text-sm">28 Juz Completed</p>
+</div>
+<div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+<div class="bg-slate-400 h-2.5 rounded-full" style="width: 93%"></div>
+</div>
+<div class="flex items-center justify-between w-full text-xs text-text-secondary font-medium">
+<span>93% Progress</span>
+<span class="flex items-center gap-1 text-primary"><span class="material-symbols-outlined text-sm">trending_up</span> +2 Juz</span>
+</div>
+</div>
+</div>
+<div class="order-1 md:order-2 relative flex flex-col bg-white border-2 border-primary/20 rounded-xl p-6 shadow-xl shadow-emerald-100 transform md:-translate-y-4 hover:shadow-2xl transition-all duration-300">
+<div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-primary text-white text-sm font-bold px-4 py-1.5 rounded-full flex items-center gap-1 shadow-lg">
+<span class="material-symbols-outlined text-lg">workspace_premium</span> 1st Place
+            </div>
+<div class="flex flex-col items-center text-center gap-5 mt-4">
+<div class="relative">
+<div class="w-24 h-24 rounded-full p-1 border-4 border-primary shadow-sm">
+<div class="w-full h-full rounded-full bg-cover bg-center" data-alt="Profile picture of top ranking user" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBXWwCFfPhz77bF94CqlLnklxBiyCy_ldBb1VvJM63sYZ9WF7LnsUoQMZKz7FO41yKCNQKFCXPfETqjS6UAhAEOAqFwFBHu1hAxkJALiljdFOyZ7Zweyu_2CYGQlQS3NtEagQKOMUyk0stIuFLZPZfoTYCHr_8J_5oQxXdVrd9Ra_iBICYSBpdTx8wwHADkXqvrMW3cXZT6V-A4NKprT5YkPdKY2ikJ7xfUuzvNP7pnqDcyX093eu05TJMcCvTDeN-BLT187wUu_7tN");'></div>
+</div>
+<div class="absolute -bottom-2 -right-2 bg-white rounded-full p-1.5 border border-primary shadow-sm">
+<span class="material-symbols-outlined text-orange-500 text-xl">local_fire_department</span>
+</div>
+</div>
+<div>
+<h3 class="text-text-main text-xl font-bold">Abdullah A.</h3>
+<p class="text-primary-dark font-semibold text-sm">Hafiz • 30 Juz Completed</p>
+</div>
+<div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden border border-slate-200">
+<div class="bg-primary h-3 rounded-full relative overflow-hidden" style="width: 100%">
+<div class="absolute top-0 left-0 bottom-0 right-0 bg-[linear-gradient(45deg,rgba(255,255,255,0.2)_25%,transparent_25%,transparent_50%,rgba(255,255,255,0.2)_50%,rgba(255,255,255,0.2)_75%,transparent_75%,transparent)] bg-[length:1rem_1rem]"></div>
+</div>
+</div>
+<div class="flex items-center justify-between w-full text-xs font-semibold">
+<span class="text-primary">100% Progress</span>
+<span class="text-text-secondary">Khatam Completed</span>
+</div>
+</div>
+</div>
+<div class="order-3 md:order-3 relative flex flex-col bg-white border border-border-light rounded-xl p-6 hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-white border border-border-light text-text-secondary text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-base text-amber-700">emoji_events</span> 3rd Place
+            </div>
+<div class="flex flex-col items-center text-center gap-4 mt-2">
+<div class="relative">
+<div class="w-20 h-20 rounded-full p-1 border-2 border-amber-100">
+<div class="w-full h-full rounded-full bg-cover bg-center" data-alt="Profile picture of ranking user" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCrGHryMvLv9haV4DE3hcZulJmXIKOVLkPscuhtmZA4HJ153-fCi4lopUegp2-htC6GmNEisLvUw1I0he12inVtFxT8sr5Hl1E9LhkHODreic86XIHtbKhs8419ql-MZk0A0QP4HFx--qJkePzk-ImMN0P-YDOyjQfAa14YpVYxfD3nKtNtL4b-cgTCOgxrMVePya2ubat8JSHYw9tVzk10QjQpX1K7XYYXHG9UkxOflGFWQJzi_CBuxk08QD4422kpXRLYm0UkhlpP");'></div>
+</div>
+</div>
+<div>
+<h3 class="text-text-main text-lg font-bold">Omar K.</h3>
+<p class="text-text-secondary text-sm">25 Juz Completed</p>
+</div>
+<div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+<div class="bg-amber-600/70 h-2.5 rounded-full" style="width: 83%"></div>
+</div>
+<div class="flex items-center justify-between w-full text-xs text-text-secondary font-medium">
+<span>83% Progress</span>
+<span class="flex items-center gap-1 text-primary"><span class="material-symbols-outlined text-sm">trending_up</span> +5 Ayat</span>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full flex flex-col sm:flex-row justify-between items-center gap-4 mb-6 bg-white border border-border-light p-3 rounded-xl shadow-sm">
+<div class="relative w-full sm:w-auto sm:min-w-[320px]">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary material-symbols-outlined text-[20px]">search</span>
+<input class="w-full bg-slate-50 text-text-main text-sm placeholder:text-text-secondary/60 rounded-lg border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary pl-10 pr-4 py-2.5 transition-all" placeholder="Search members by name..." type="text"/>
+</div>
+<div class="flex items-center gap-3 w-full sm:w-auto overflow-x-auto pb-1 sm:pb-0">
+<button class="flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary-dark border border-primary/20 rounded-lg text-sm font-semibold whitespace-nowrap">
+<span>All Members</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 bg-transparent text-text-secondary hover:text-text-main hover:bg-slate-50 rounded-lg text-sm font-medium whitespace-nowrap transition-colors">
+<span>Friends</span>
+</button>
+<div class="h-5 w-px bg-slate-200"></div>
+<button class="flex items-center gap-2 px-4 py-2 bg-transparent text-text-secondary hover:text-text-main hover:bg-slate-50 rounded-lg text-sm font-medium whitespace-nowrap transition-colors">
+<span class="material-symbols-outlined text-[18px]">sort</span>
+<span>Sort by: Juz</span>
+</button>
+</div>
+</div>
+<div class="w-full bg-white border border-border-light rounded-xl overflow-hidden mb-20 shadow-sm">
+<div class="hidden md:grid grid-cols-12 gap-4 px-6 py-4 border-b border-border-light bg-slate-50/50 text-text-secondary text-xs font-bold uppercase tracking-wider">
+<div class="col-span-1 text-center">Rank</div>
+<div class="col-span-4">Member</div>
+<div class="col-span-3">Current Location</div>
+<div class="col-span-3">Progress</div>
+<div class="col-span-1 text-right">Trend</div>
+</div>
+<div class="divide-y divide-border-light">
+<div class="group grid grid-cols-1 md:grid-cols-12 gap-4 px-4 md:px-6 py-4 items-center hover:bg-slate-50 transition-colors">
+<div class="flex items-center md:justify-center col-span-12 md:col-span-1 mb-2 md:mb-0">
+<span class="bg-slate-100 text-text-secondary w-8 h-8 flex items-center justify-center rounded-full text-sm font-bold border border-border-light">4</span>
+<span class="ml-2 md:hidden text-text-secondary text-sm font-medium">Rank</span>
+</div>
+<div class="col-span-12 md:col-span-4 flex items-center gap-3">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 flex-shrink-0" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBTHaBpM249Kz7LNUbz15AINpnedyaFfBrsZe9NE2CaMqEQuIt6GcsHV9m0pabb95PsnSmu6ZyBBGmcrQKxZ0VopAPTJI_hiVBeFHesBd6gfvBGO6RfVC8uhQ_GuFj9cpMoJ8Sltk8nqQTpebtM0tfUk7wAQZZ8e5Whj49gOjriDultnVpjQ2vA733-UQsA-LlxTRx9OsruSsBNYZersorwKfY8KA3wHFXEEBgfHwGfsBdpP60xdBSk86xXAd8QJVwxRN4ZHAUL-MAI");'></div>
+<div>
+<p class="text-text-main text-sm font-bold">Yusuf M.</p>
+<p class="text-text-secondary text-xs">Joined 2 months ago</p>
+</div>
+</div>
+<div class="col-span-6 md:col-span-3">
+<div class="flex items-center gap-2 text-text-secondary md:hidden mb-1 text-xs uppercase font-bold">Location</div>
+<p class="text-text-main text-sm font-medium">Juz 22 • Surah Ya-Sin</p>
+<p class="text-text-secondary text-xs">Ayah 12</p>
+</div>
+<div class="col-span-6 md:col-span-3">
+<div class="flex items-center gap-2 text-text-secondary md:hidden mb-1 text-xs uppercase font-bold">Progress</div>
+<div class="flex items-center gap-3">
+<div class="flex-1 bg-slate-100 rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 73%"></div>
+</div>
+<span class="text-text-main text-sm font-bold">73%</span>
+</div>
+</div>
+<div class="col-span-12 md:col-span-1 flex justify-end">
+<div class="flex items-center gap-1 text-primary text-xs font-bold bg-primary/10 px-2 py-1 rounded">
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span>
+                        1
+                    </div>
+</div>
+</div>
+<div class="group grid grid-cols-1 md:grid-cols-12 gap-4 px-4 md:px-6 py-4 items-center hover:bg-slate-50 transition-colors">
+<div class="flex items-center md:justify-center col-span-12 md:col-span-1 mb-2 md:mb-0">
+<span class="bg-slate-100 text-text-secondary w-8 h-8 flex items-center justify-center rounded-full text-sm font-bold border border-border-light">5</span>
+<span class="ml-2 md:hidden text-text-secondary text-sm font-medium">Rank</span>
+</div>
+<div class="col-span-12 md:col-span-4 flex items-center gap-3">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 flex-shrink-0" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDTmD5Qfi_EY_SVxtrTxeM6M_GLPjYYwyCQPvxY0dG2cHce4qs03G3KTmWFfMa4Ri_e9RND5uQw2Rqouh1FEVbLlMOLsHk4Ffj2XmLfJ6mEkx6f72JEhYcwDV_4Z-wbSW1vavYi_oQgNfXjIyskWE2rr-mR_WjNeBe65wn3c_yOOFp_QKYflAOo_0lzjjbKxIyEus5_AcT7y5tGgpNCCJLbKuIvNeTQl40gdT15Bflft03TX2vFiYVyZGpwKgnCFMiakd847k6At0yO");'></div>
+<div>
+<p class="text-text-main text-sm font-bold">Aisha R.</p>
+<p class="text-text-secondary text-xs">Consistent Learner</p>
+</div>
+<span class="bg-orange-50 text-orange-600 text-[10px] px-1.5 py-0.5 rounded font-bold border border-orange-200 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">local_fire_department</span> 12
+                    </span>
+</div>
+<div class="col-span-6 md:col-span-3">
+<div class="flex items-center gap-2 text-text-secondary md:hidden mb-1 text-xs uppercase font-bold">Location</div>
+<p class="text-text-main text-sm font-medium">Juz 18 • Surah Al-Muminun</p>
+<p class="text-text-secondary text-xs">Ayah 45</p>
+</div>
+<div class="col-span-6 md:col-span-3">
+<div class="flex items-center gap-2 text-text-secondary md:hidden mb-1 text-xs uppercase font-bold">Progress</div>
+<div class="flex items-center gap-3">
+<div class="flex-1 bg-slate-100 rounded-full h-2">
+<div class="bg-primary/80 h-2 rounded-full" style="width: 60%"></div>
+</div>
+<span class="text-text-main text-sm font-bold">60%</span>
+</div>
+</div>
+<div class="col-span-12 md:col-span-1 flex justify-end">
+<div class="flex items-center gap-1 text-text-secondary text-xs font-medium px-2 py-1">
+<span class="material-symbols-outlined text-[16px]">remove</span>
+</div>
+</div>
+</div>
+<div class="group grid grid-cols-1 md:grid-cols-12 gap-4 px-4 md:px-6 py-4 items-center hover:bg-slate-50 transition-colors">
+<div class="flex items-center md:justify-center col-span-12 md:col-span-1 mb-2 md:mb-0">
+<span class="bg-slate-100 text-text-secondary w-8 h-8 flex items-center justify-center rounded-full text-sm font-bold border border-border-light">7</span>
+<span class="ml-2 md:hidden text-text-secondary text-sm font-medium">Rank</span>
+</div>
+<div class="col-span-12 md:col-span-4 flex items-center gap-3">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 flex-shrink-0 flex items-center justify-center bg-slate-100 text-text-secondary text-xs font-bold border border-slate-200" data-alt="Default user avatar pattern">
+                        IL
+                    </div>
+<div>
+<p class="text-text-main text-sm font-bold">Ibrahim L.</p>
+<p class="text-text-secondary text-xs">Weekend Learner</p>
+</div>
+</div>
+<div class="col-span-6 md:col-span-3">
+<div class="flex items-center gap-2 text-text-secondary md:hidden mb-1 text-xs uppercase font-bold">Location</div>
+<p class="text-text-main text-sm font-medium">Juz 10 • Surah At-Tawbah</p>
+<p class="text-text-secondary text-xs">Ayah 60</p>
+</div>
+<div class="col-span-6 md:col-span-3">
+<div class="flex items-center gap-2 text-text-secondary md:hidden mb-1 text-xs uppercase font-bold">Progress</div>
+<div class="flex items-center gap-3">
+<div class="flex-1 bg-slate-100 rounded-full h-2">
+<div class="bg-primary/40 h-2 rounded-full" style="width: 33%"></div>
+</div>
+<span class="text-text-main text-sm font-bold">33%</span>
+</div>
+</div>
+<div class="col-span-12 md:col-span-1 flex justify-end">
+<div class="flex items-center gap-1 text-rose-500 text-xs font-bold bg-rose-50 px-2 py-1 rounded">
+<span class="material-symbols-outlined text-[16px]">arrow_downward</span>
+                        1
+                    </div>
+</div>
+</div>
+<div class="group grid grid-cols-1 md:grid-cols-12 gap-4 px-4 md:px-6 py-4 items-center bg-emerald-50/50 border-l-4 border-l-primary shadow-[inset_0_0_12px_rgba(16,185,129,0.05)]">
+<div class="flex items-center md:justify-center col-span-12 md:col-span-1 mb-2 md:mb-0">
+<span class="bg-primary text-white w-8 h-8 flex items-center justify-center rounded-full text-sm font-bold shadow-sm">8</span>
+<span class="ml-2 md:hidden text-primary-dark text-sm font-bold">Your Rank</span>
+</div>
+<div class="col-span-12 md:col-span-4 flex items-center gap-3">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 flex-shrink-0 ring-2 ring-primary ring-offset-2 ring-offset-white" data-alt="Current user avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDcpSF8ELfQgpKtdlUdcz7h5NSJirdKVlZKQK8w1D2F5DDRRxDPnL4EPkGV_FG1oTxPPpQwTLjsQf04EKZOhq0e35HhKR4EWgnzNyjBNj07isRstOVG-ZNat6GuvDbUxQ3eN55DYBKzzunnaVPybCvfJSafbsxQUgJpNjfzFV8zHzcRn3gaHQMg7csbUun8YDm-zoiddMv6vWR_g-KrnqOikPDZsmyo9IujMRIw5AFj78q8nrtX98tMTXJKQSJVsVWRo0oRn7lbqL3g");'></div>
+<div>
+<p class="text-text-main text-sm font-bold flex items-center gap-2">Ali Hassan <span class="text-[10px] bg-primary text-white px-1.5 py-0.5 rounded uppercase tracking-wider font-black">You</span></p>
+<p class="text-text-secondary text-xs font-medium">Keep it up, you're doing great!</p>
+</div>
+</div>
+<div class="col-span-6 md:col-span-3">
+<div class="flex items-center gap-2 text-text-secondary md:hidden mb-1 text-xs uppercase font-bold">Location</div>
+<p class="text-text-main text-sm font-semibold">Juz 8 • Surah Al-An'am</p>
+<p class="text-text-secondary text-xs">Ayah 25</p>
+</div>
+<div class="col-span-6 md:col-span-3">
+<div class="flex items-center gap-2 text-text-secondary md:hidden mb-1 text-xs uppercase font-bold">Progress</div>
+<div class="flex items-center gap-3">
+<div class="flex-1 bg-white border border-slate-200 rounded-full h-2">
+<div class="bg-primary h-2 rounded-full shadow-[0_0_8px_rgba(16,185,129,0.4)]" style="width: 26%"></div>
+</div>
+<span class="text-text-main text-sm font-bold">26%</span>
+</div>
+</div>
+<div class="col-span-12 md:col-span-1 flex justify-end">
+<div class="flex items-center gap-1 text-primary text-xs font-bold bg-white px-2 py-1 rounded border border-primary/20">
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span>
+                        2
+                    </div>
+</div>
+</div>
+<div class="group grid grid-cols-1 md:grid-cols-12 gap-4 px-4 md:px-6 py-4 items-center hover:bg-slate-50 transition-colors">
+<div class="flex items-center md:justify-center col-span-12 md:col-span-1 mb-2 md:mb-0">
+<span class="bg-slate-100 text-text-secondary w-8 h-8 flex items-center justify-center rounded-full text-sm font-bold border border-border-light">9</span>
+<span class="ml-2 md:hidden text-text-secondary text-sm font-medium">Rank</span>
+</div>
+<div class="col-span-12 md:col-span-4 flex items-center gap-3">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 flex-shrink-0 flex items-center justify-center bg-slate-100 text-text-secondary text-xs font-bold border border-slate-200" data-alt="Default user avatar pattern">
+                        KM
+                    </div>
+<div>
+<p class="text-text-main text-sm font-bold">Khalid M.</p>
+<p class="text-text-secondary text-xs">New Member</p>
+</div>
+</div>
+<div class="col-span-6 md:col-span-3">
+<div class="flex items-center gap-2 text-text-secondary md:hidden mb-1 text-xs uppercase font-bold">Location</div>
+<p class="text-text-main text-sm font-medium">Juz 5 • Surah An-Nisa</p>
+<p class="text-text-secondary text-xs">Ayah 110</p>
+</div>
+<div class="col-span-6 md:col-span-3">
+<div class="flex items-center gap-2 text-text-secondary md:hidden mb-1 text-xs uppercase font-bold">Progress</div>
+<div class="flex items-center gap-3">
+<div class="flex-1 bg-slate-100 rounded-full h-2">
+<div class="bg-primary/20 h-2 rounded-full" style="width: 16%"></div>
+</div>
+<span class="text-text-main text-sm font-bold">16%</span>
+</div>
+</div>
+<div class="col-span-12 md:col-span-1 flex justify-end">
+<div class="flex items-center gap-1 text-text-secondary text-xs font-medium px-2 py-1">
+<span class="material-symbols-outlined text-[16px]">remove</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-slate-50/50 border-t border-border-light px-6 py-4 flex items-center justify-between">
+<p class="text-text-secondary text-sm">Showing 1-9 of 142 members</p>
+<div class="flex gap-2">
+<button class="px-3 py-1.5 rounded-lg border border-border-light bg-white text-text-secondary text-sm hover:text-text-main hover:bg-slate-50 transition-colors disabled:opacity-50 font-medium" disabled="">Previous</button>
+<button class="px-3 py-1.5 rounded-lg border border-border-light bg-white text-text-secondary text-sm hover:text-text-main hover:bg-slate-50 transition-colors font-medium">Next</button>
+</div>
+</div>
+</div>
+<div class="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-lg border-t border-border-light p-4 md:hidden shadow-[0_-10px_20px_rgba(0,0,0,0.05)] z-40">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="bg-primary text-white w-8 h-8 flex items-center justify-center rounded-full text-sm font-bold shadow-sm">8</span>
+<div>
+<p class="text-text-main text-sm font-bold">You</p>
+<p class="text-text-secondary text-xs">Juz 8 • 26%</p>
+</div>
+</div>
+<button class="text-primary-dark text-sm font-bold hover:text-primary transition-colors">View Details</button>
+</div>
+</div>
+</main>
+
+</body></html>
