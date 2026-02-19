@@ -21,7 +21,7 @@ auth.get("/google", (c) => {
     scope: "openid email profile",
     state,
     access_type: "online",
-    prompt: "consent",
+    // prompt: "consent",
   });
 
   return c.redirect(`https://accounts.google.com/o/oauth2/v2/auth?${params}`);
