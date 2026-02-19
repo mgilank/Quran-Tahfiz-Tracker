@@ -54,4 +54,25 @@ admin.post("/users/:id/role", async (c) => {
   return c.redirect("/admin?success=User role updated.");
 });
 
+admin.post("/users/:id/delete", (c) => {
+  const currentUser = c.get("user");
+  const userId = parseInt(c.req.param("id"), 10);
+
+  // Cannot delete yourself
+  if (userId === currentUser.id) {
+    return c.redirect("/admin?success=Cannot delete your own account.");
+  }
+
+  // Cannot delete other admins
+  const target = db.prepare("SELECT role FROM users WHERE id = ?").get(userId) as { role: string } | null;
+  if (!target) return c.redirect("/admin?success=User not found.");
+  if (target.role === "admin") {
+    return c.redirect("/admin?success=Cannot delete another admin.");
+  }
+
+  // ON DELETE CASCADE handles sessions, progress_entries, progress_log
+  db.prepare("DELETE FROM users WHERE id = ?").run(userId);
+  return c.redirect("/admin?success=Member removed successfully.");
+});
+
 export { admin as adminRoutes };

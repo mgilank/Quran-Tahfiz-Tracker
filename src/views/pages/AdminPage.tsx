@@ -129,10 +129,10 @@ export const AdminPage: FC<{
                 <div class="flex items-center gap-3">
                   <span
                     class={`text-xs font-bold px-2 py-1 rounded ${u.role === "admin"
-                        ? "bg-purple-50 text-purple-600 border border-purple-200"
-                        : u.role === "member"
-                          ? "bg-emerald-50 text-emerald-600 border border-emerald-200"
-                          : "bg-amber-50 text-amber-600 border border-amber-200"
+                      ? "bg-purple-50 text-purple-600 border border-purple-200"
+                      : u.role === "member"
+                        ? "bg-emerald-50 text-emerald-600 border border-emerald-200"
+                        : "bg-amber-50 text-amber-600 border border-amber-200"
                       }`}
                   >
                     {u.role}
@@ -145,6 +145,21 @@ export const AdminPage: FC<{
                         class="text-text-secondary hover:text-primary text-xs font-medium transition-colors"
                       >
                         Make Admin
+                      </button>
+                    </form>
+                  )}
+                  {u.role !== "admin" && u.id !== user.id && (
+                    <form
+                      method="POST"
+                      action={`/admin/users/${u.id}/delete`}
+                      onsubmit="return confirm('Remove ' + this.dataset.name + '? This will delete all their progress data and cannot be undone.')"
+                      data-name={u.name}
+                    >
+                      <button
+                        type="submit"
+                        class="text-text-secondary hover:text-red-500 text-xs font-medium transition-colors"
+                      >
+                        Remove
                       </button>
                     </form>
                   )}
