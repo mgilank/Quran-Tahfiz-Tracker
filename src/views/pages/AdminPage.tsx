@@ -2,6 +2,7 @@ import type { FC } from "hono/jsx";
 import { Layout } from "../Layout.tsx";
 import { Header } from "../components/Header.tsx";
 import type { User } from "../../types.ts";
+import { APP_NAME } from "../../config.ts";
 
 export const AdminPage: FC<{
   user: User;
@@ -10,7 +11,7 @@ export const AdminPage: FC<{
   success?: string;
 }> = ({ user, pendingUsers, allUsers, success }) => {
   return (
-    <Layout title="Admin Panel - Tahfiz Community">
+    <Layout title={`Admin Panel - ${APP_NAME}`}>
       <Header user={user} currentPath="/admin" />
       <main class="flex-1 flex flex-col items-center w-full px-4 sm:px-6 lg:px-8 py-8 max-w-5xl mx-auto">
         <div class="w-full flex flex-col gap-2 mb-8">
@@ -127,13 +128,12 @@ export const AdminPage: FC<{
                 </div>
                 <div class="flex items-center gap-3">
                   <span
-                    class={`text-xs font-bold px-2 py-1 rounded ${
-                      u.role === "admin"
+                    class={`text-xs font-bold px-2 py-1 rounded ${u.role === "admin"
                         ? "bg-purple-50 text-purple-600 border border-purple-200"
                         : u.role === "member"
                           ? "bg-emerald-50 text-emerald-600 border border-emerald-200"
                           : "bg-amber-50 text-amber-600 border border-amber-200"
-                    }`}
+                      }`}
                   >
                     {u.role}
                   </span>

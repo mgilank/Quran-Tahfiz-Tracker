@@ -3,6 +3,7 @@ import { Layout } from "../Layout.tsx";
 import { Header } from "../components/Header.tsx";
 import type { User, ProgressEntry } from "../../types.ts";
 import { SURAHS, getSurah, getJuzForPosition } from "../../data/quran-meta.ts";
+import { APP_NAME } from "../../config.ts";
 
 export const ProgressPage: FC<{
   user: User;
@@ -19,7 +20,7 @@ export const ProgressPage: FC<{
   }
 
   return (
-    <Layout title="Submit Progress - Tahfiz Community">
+    <Layout title={`Submit Progress - ${APP_NAME}`}>
       <Header user={user} currentPath="/progress" />
       <main class="flex-1 flex flex-col items-center w-full px-4 sm:px-6 lg:px-8 py-8 max-w-4xl mx-auto">
         <div class="w-full flex flex-col gap-2 mb-8">

@@ -1,6 +1,7 @@
 import { Hono } from "hono";
 import { setCookie, getCookie, deleteCookie } from "hono/cookie";
 import { upsertUser, createSession, deleteSession } from "../lib/session.ts";
+import { GOOGLE_REDIRECT_URI } from "../config.ts";
 
 const auth = new Hono();
 
@@ -15,7 +16,7 @@ auth.get("/google", (c) => {
 
   const params = new URLSearchParams({
     client_id: process.env.GOOGLE_CLIENT_ID || "",
-    redirect_uri: `${process.env.APP_URL || "http://localhost:3000"}/auth/google/callback`,
+    redirect_uri: GOOGLE_REDIRECT_URI,
     response_type: "code",
     scope: "openid email profile",
     state,
@@ -44,7 +45,7 @@ auth.get("/google/callback", async (c) => {
       code,
       client_id: process.env.GOOGLE_CLIENT_ID || "",
       client_secret: process.env.GOOGLE_CLIENT_SECRET || "",
-      redirect_uri: `${process.env.APP_URL || "http://localhost:3000"}/auth/google/callback`,
+      redirect_uri: GOOGLE_REDIRECT_URI,
       grant_type: "authorization_code",
     }),
   });

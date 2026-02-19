@@ -1,5 +1,6 @@
 import type { FC } from "hono/jsx";
 import type { User } from "../../types.ts";
+import { APP_NAME } from "../../config.ts";
 
 const Logo: FC = () => (
   <svg class="w-full h-full" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
@@ -27,7 +28,7 @@ export const Header: FC<{ user: User | null; currentPath: string }> = ({
           <Logo />
         </div>
         <h2 class="text-text-main text-xl font-bold leading-tight tracking-[-0.015em]">
-          Tahfiz Community
+          {APP_NAME}
         </h2>
       </div>
       <div class="hidden md:flex flex-1 justify-end gap-8 items-center">

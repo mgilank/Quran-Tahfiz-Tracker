@@ -1,10 +1,11 @@
 import type { FC } from "hono/jsx";
 import { Layout } from "../Layout.tsx";
 import type { User } from "../../types.ts";
+import { APP_NAME } from "../../config.ts";
 
 export const PendingPage: FC<{ user: User }> = ({ user }) => {
   return (
-    <Layout title="Awaiting Approval - Tahfiz Community">
+    <Layout title={`Awaiting Approval - ${APP_NAME}`}>
       <div class="flex-1 flex items-center justify-center px-4">
         <div class="w-full max-w-md text-center">
           <div class="bg-white border border-border-light rounded-2xl p-8 shadow-lg">

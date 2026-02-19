@@ -12,6 +12,7 @@ import { PendingPage } from "./views/pages/PendingPage.tsx";
 import { Layout } from "./views/Layout.tsx";
 import { authMiddleware } from "./middleware/auth.ts";
 import type { Env } from "./types.ts";
+import { APP_NAME } from "./config.ts";
 
 // Initialize database tables
 initializeDatabase();
@@ -62,7 +63,7 @@ app.route("/dashboard", dashboardRoutes);
 // 404
 app.notFound((c) => {
   return c.html(
-    <Layout title="Not Found - Tahfiz Community">
+    <Layout title={`Not Found - ${APP_NAME}`}>
       <div class="flex-1 flex items-center justify-center">
         <div class="text-center">
           <h1 class="text-6xl font-black text-text-secondary mb-4">404</h1>
@@ -78,7 +79,7 @@ app.notFound((c) => {
 });
 
 const port = parseInt(process.env.PORT || "3000", 10);
-console.log(`Tahfiz Community running at http://localhost:${port}`);
+console.log(`${APP_NAME} running at http://localhost:${port}`);
 
 export default {
   port,

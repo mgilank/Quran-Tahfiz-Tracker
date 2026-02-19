@@ -3,6 +3,7 @@ import { Layout } from "../Layout.tsx";
 import { Header } from "../components/Header.tsx";
 import type { User, ProgressEntry, RankedUser } from "../../types.ts";
 import { SURAHS, JUZ_BOUNDARIES, getSurah, getJuzForPosition } from "../../data/quran-meta.ts";
+import { APP_NAME } from "../../config.ts";
 
 export const DashboardPage: FC<{
   user: User;
@@ -22,7 +23,7 @@ export const DashboardPage: FC<{
   }
 
   return (
-    <Layout title="Dashboard - Tahfiz Community">
+    <Layout title={`Dashboard - ${APP_NAME}`}>
       <Header user={user} currentPath="/dashboard" />
       <main class="flex-1 flex flex-col items-center w-full px-4 sm:px-6 lg:px-8 py-8 max-w-5xl mx-auto">
         {/* Welcome */}
@@ -151,13 +152,12 @@ export const DashboardPage: FC<{
 
               return (
                 <div
-                  class={`aspect-square rounded-lg flex items-center justify-center text-sm font-bold border transition-all ${
-                    status === "complete"
+                  class={`aspect-square rounded-lg flex items-center justify-center text-sm font-bold border transition-all ${status === "complete"
                       ? "bg-primary text-white border-primary shadow-sm"
                       : status === "partial"
                         ? "bg-primary/10 text-primary border-primary/30"
                         : "bg-slate-50 text-text-secondary border-border-light"
-                  }`}
+                    }`}
                   title={`Juz ${juz.juzNumber}`}
                 >
                   {juz.juzNumber}

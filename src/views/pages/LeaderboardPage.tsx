@@ -6,6 +6,7 @@ import { SearchFilter } from "../components/SearchFilter.tsx";
 import { LeaderboardTable } from "../components/LeaderboardTable.tsx";
 import { MobileBottomBar } from "../components/MobileBottomBar.tsx";
 import type { User, RankedUser } from "../../types.ts";
+import { APP_NAME } from "../../config.ts";
 
 export const LeaderboardPage: FC<{
   user: User;
@@ -19,7 +20,7 @@ export const LeaderboardPage: FC<{
   sort?: string;
 }> = ({ user, topThree, members, currentUserRank, page, totalMembers, perPage, search, sort }) => {
   return (
-    <Layout title="Leaderboard - Tahfiz Community">
+    <Layout title={`Leaderboard - ${APP_NAME}`}>
       <Header user={user} currentPath="/leaderboard" />
       <main class="flex-1 flex flex-col items-center w-full px-4 sm:px-6 lg:px-8 py-8 max-w-7xl mx-auto">
         <div class="w-full flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-8">

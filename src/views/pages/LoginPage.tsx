@@ -1,9 +1,10 @@
 import type { FC } from "hono/jsx";
 import { Layout } from "../Layout.tsx";
+import { APP_NAME } from "../../config.ts";
 
 export const LoginPage: FC<{ error?: string }> = ({ error }) => {
   return (
-    <Layout title="Sign In - Tahfiz Community">
+    <Layout title={`Sign In - ${APP_NAME}`}>
       <div class="flex-1 flex items-center justify-center px-4">
         <div class="w-full max-w-md">
           <div class="bg-white border border-border-light rounded-2xl p-8 shadow-lg text-center">
@@ -16,7 +17,7 @@ export const LoginPage: FC<{ error?: string }> = ({ error }) => {
               </svg>
             </div>
             <h1 class="text-text-main text-2xl font-black tracking-tight mb-2">
-              Tahfiz Community
+              {APP_NAME}
             </h1>
             <p class="text-text-secondary text-sm mb-8">
               Track your Quran memorization progress and stay motivated with your community during Ramadan.
