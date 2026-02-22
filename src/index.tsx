@@ -7,6 +7,7 @@ import { leaderboardRoutes } from "./routes/leaderboard.tsx";
 import { progressRoutes } from "./routes/progress.tsx";
 import { adminRoutes } from "./routes/admin.tsx";
 import { dashboardRoutes } from "./routes/dashboard.tsx";
+import { quranRoutes } from "./routes/quran.tsx";
 import { LoginPage } from "./views/pages/LoginPage.tsx";
 import { PendingPage } from "./views/pages/PendingPage.tsx";
 import { Layout } from "./views/Layout.tsx";
@@ -59,6 +60,7 @@ app.route("/leaderboard", leaderboardRoutes);
 app.route("/progress", progressRoutes);
 app.route("/admin", adminRoutes);
 app.route("/dashboard", dashboardRoutes);
+app.route("/quran", quranRoutes);
 
 // 404
 app.notFound((c) => {

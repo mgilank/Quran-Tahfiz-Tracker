@@ -35,6 +35,15 @@ export interface ProgressLog {
   logged_at: string;
 }
 
+export interface ReadingBookmark {
+  id: number;
+  user_id: number;
+  surah_number: number;
+  ayah_number: number;
+  created_at: string;
+  updated_at: string;
+}
+
 export interface RankedUser {
   id: number;
   name: string;

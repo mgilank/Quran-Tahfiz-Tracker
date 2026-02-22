@@ -47,5 +47,16 @@ export function initializeDatabase() {
 
     CREATE INDEX IF NOT EXISTS idx_progress_log_user ON progress_log(user_id);
     CREATE INDEX IF NOT EXISTS idx_progress_log_time ON progress_log(logged_at);
+
+    CREATE TABLE IF NOT EXISTS reading_bookmarks (
+      id           INTEGER PRIMARY KEY AUTOINCREMENT,
+      user_id      INTEGER NOT NULL UNIQUE REFERENCES users(id) ON DELETE CASCADE,
+      surah_number INTEGER NOT NULL,
+      ayah_number  INTEGER NOT NULL,
+      created_at   TEXT NOT NULL DEFAULT (datetime('now')),
+      updated_at   TEXT NOT NULL DEFAULT (datetime('now'))
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_reading_bookmarks_user ON reading_bookmarks(user_id);
   `);
 }

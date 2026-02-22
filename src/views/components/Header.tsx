@@ -18,6 +18,7 @@ export const Header: FC<{ user: User | null; currentPath: string }> = ({
   const navItems = [
     { href: "/dashboard", label: "Dashboard" },
     { href: "/leaderboard", label: "Leaderboard" },
+    { href: "/quran", label: "Quran" },
     { href: "/progress", label: "Submit Progress" },
   ];
 
