@@ -2,6 +2,7 @@ import { Hono } from "hono";
 import { authMiddleware, memberMiddleware } from "../middleware/auth.ts";
 import { getUserProgress } from "../lib/progress-calc.ts";
 import { getSurah } from "../data/quran-meta.ts";
+import { resolveProgressUpdateInput } from "../lib/progress-input.ts";
 import { db } from "../db/connection.ts";
 import { ProgressPage } from "../views/pages/ProgressPage.tsx";
 import type { Env } from "../types.ts";
@@ -32,11 +33,14 @@ progress.post("/", async (c) => {
   const user = c.get("user");
   const body = await c.req.parseBody();
 
+  const mode =
+    body.mode === "increment" || body.mode === "advance" || body.mode === "complete"
+      ? body.mode
+      : "set";
   const surahNumber = parseInt(body.surah_number as string, 10);
-  const lastAyah = parseInt(body.last_ayah as string, 10);
 
   // Validate
-  if (isNaN(surahNumber) || isNaN(lastAyah)) {
+  if (isNaN(surahNumber)) {
     return c.redirect("/progress?error=Invalid input. Please provide valid numbers.");
   }
 
@@ -45,20 +49,28 @@ progress.post("/", async (c) => {
     return c.redirect("/progress?error=Invalid Surah number.");
   }
 
-  if (lastAyah < 1 || lastAyah > surah.totalAyahs) {
-    return c.redirect(
-      `/progress?error=Ayah must be between 1 and ${surah.totalAyahs} for ${surah.name}.`
-    );
-  }
-
-  const completed = lastAyah === surah.totalAyahs ? 1 : 0;
-
   // Get existing entry for progress log
   const existing = db
     .prepare("SELECT last_ayah FROM progress_entries WHERE user_id = ? AND surah_number = ?")
     .get(user.id, surahNumber) as { last_ayah: number } | null;
 
   const previousAyah = existing?.last_ayah || 0;
+  const resolvedInput = resolveProgressUpdateInput({
+    mode,
+    rawLastAyah: body.last_ayah as string | undefined,
+    rawIncrement: body.ayah_increment as string | undefined,
+    existingLastAyah: previousAyah,
+    hasExistingEntry: Boolean(existing),
+    surahName: surah.name,
+    surahTotalAyahs: surah.totalAyahs,
+  });
+
+  if (!resolvedInput.ok) {
+    return c.redirect(`/progress?error=${resolvedInput.error}`);
+  }
+
+  const lastAyah = resolvedInput.lastAyah;
+  const completed = lastAyah === surah.totalAyahs ? 1 : 0;
 
   // Upsert progress entry
   db.prepare(
@@ -75,8 +87,13 @@ progress.post("/", async (c) => {
     ).run(user.id, surahNumber, previousAyah, lastAyah);
   }
 
+  const incrementLabel =
+    resolvedInput.usedMode !== "set" && resolvedInput.appliedIncrement > 0
+      ? ` (+${resolvedInput.appliedIncrement} ayah)`
+      : "";
+
   return c.redirect(
-    `/progress?success=Progress updated: ${surah.name} - Ayah ${lastAyah}/${surah.totalAyahs}${completed ? " (Completed!)" : ""}`
+    `/progress?success=Progress updated: ${surah.name} - Ayah ${lastAyah}/${surah.totalAyahs}${incrementLabel}${completed ? " (Completed!)" : ""}`
   );
 });
 

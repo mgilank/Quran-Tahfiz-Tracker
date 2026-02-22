@@ -97,7 +97,7 @@ export const ProgressPage: FC<{
             </div>
             <div class="w-full sm:w-40">
               <label class="block text-text-secondary text-xs font-bold mb-1 uppercase tracking-wider">
-                Last Ayah Memorized
+                Last Ayah
               </label>
               <input
                 type="number"
@@ -164,6 +164,50 @@ export const ProgressPage: FC<{
                           {entry.last_ayah}/{surah.totalAyahs} ({percent}%)
                         </span>
                       </div>
+                      {entry.completed ? (
+                        <p class="text-xs text-primary font-semibold mt-2">Surah completed</p>
+                      ) : (
+                        <div class="mt-2 flex flex-wrap items-center justify-between gap-2">
+                          <form method="post" action="/progress" class="flex items-center gap-2">
+                            <input type="hidden" name="mode" value="advance" />
+                            <input
+                              type="hidden"
+                              name="surah_number"
+                              value={entry.surah_number.toString()}
+                            />
+                            <label class="text-xs text-text-secondary font-medium">Add ayah</label>
+                            <input
+                              type="number"
+                              name="last_ayah"
+                              min={entry.last_ayah.toString()}
+                              max={surah.totalAyahs.toString()}
+                              value={entry.last_ayah.toString()}
+                              class="w-16 bg-slate-50 text-text-main text-xs rounded border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary py-1.5 px-2 transition-all"
+                              required
+                            />
+                            <button
+                              type="submit"
+                              class="px-3 py-1.5 bg-primary text-white rounded-md text-xs font-bold hover:bg-primary-dark transition-colors"
+                            >
+                              Add
+                            </button>
+                          </form>
+                          <form method="post" action="/progress">
+                            <input type="hidden" name="mode" value="complete" />
+                            <input
+                              type="hidden"
+                              name="surah_number"
+                              value={entry.surah_number.toString()}
+                            />
+                            <button
+                              type="submit"
+                              class="px-3 py-1.5 bg-emerald-600 text-white rounded-md text-xs font-bold hover:bg-emerald-700 transition-colors shadow-sm"
+                            >
+                              Completed
+                            </button>
+                          </form>
+                        </div>
+                      )}
                     </div>
                   </div>
                 );
