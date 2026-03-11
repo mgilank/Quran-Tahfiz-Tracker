@@ -23,17 +23,33 @@ export const Layout: FC<{ title?: string; children: Child }> = ({ title, childre
           dangerouslySetInnerHTML={{
             __html: `
           tailwind.config = {
+            darkMode: 'class',
             theme: {
               extend: {
                 colors: {
                   "primary": "#10b981",
-                  "primary-dark": "#065f46",
+                  "primary-dark": "#059669",
                   "primary-light": "#ecfdf5",
-                  "background": "#f8faf9",
-                  "surface": "#ffffff",
-                  "border-light": "#e2e8f0",
-                  "text-main": "#1e293b",
-                  "text-secondary": "#64748b",
+                  "background": {
+                    DEFAULT: "#f8faf9",
+                    dark: "#0f172a"
+                  },
+                  "surface": {
+                    DEFAULT: "#ffffff",
+                    dark: "#1e293b"
+                  },
+                  "border-light": {
+                    DEFAULT: "#e2e8f0",
+                    dark: "#334155"
+                  },
+                  "text-main": {
+                    DEFAULT: "#1e293b",
+                    dark: "#f1f5f9"
+                  },
+                  "text-secondary": {
+                    DEFAULT: "#64748b",
+                    dark: "#94a3b8"
+                  },
                 },
                 fontFamily: {
                   "display": ["Lexend", "sans-serif"]
@@ -51,13 +67,24 @@ export const Layout: FC<{ title?: string; children: Child }> = ({ title, childre
         `,
           }}
         />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+          if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+          } else {
+            document.documentElement.classList.remove('dark')
+          }
+        `,
+          }}
+        />
         <style
           type="text/tailwindcss"
           dangerouslySetInnerHTML={{
             __html: `
           @layer base {
             body {
-              @apply bg-background text-text-main font-display;
+              @apply bg-background text-text-main font-display transition-colors duration-200 dark:bg-background-dark dark:text-text-main-dark;
             }
           }
         `,

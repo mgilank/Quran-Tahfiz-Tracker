@@ -35,6 +35,15 @@ export interface ProgressLog {
   logged_at: string;
 }
 
+export interface ReadingBookmark {
+  id: number;
+  user_id: number;
+  surah_number: number;
+  ayah_number: number;
+  created_at: string;
+  updated_at: string;
+}
+
 export interface RankedUser {
   id: number;
   name: string;
@@ -47,6 +56,7 @@ export interface RankedUser {
   current_surah_number: number;
   current_ayah: number;
   current_juz: number;
+  in_progress_surahs: { number: number; name: string; last_ayah: number; total_ayahs: number }[];
   trend: number;
   streak_days: number;
   joined_label: string;

@@ -10,7 +10,7 @@ const Initials: FC<{ name: string; size?: string }> = ({ name, size = "w-20 h-20
     .slice(0, 2);
   return (
     <div
-      class={`${size} rounded-full bg-slate-100 flex items-center justify-center text-text-secondary text-lg font-bold border border-slate-200`}
+      class={`${size} rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-text-secondary dark:text-text-secondary-dark text-lg font-bold border border-slate-200 dark:border-slate-700`}
     >
       {initials}
     </div>
@@ -18,14 +18,14 @@ const Initials: FC<{ name: string; size?: string }> = ({ name, size = "w-20 h-20
 };
 
 const SecondPlace: FC<{ member: RankedUser }> = ({ member }) => (
-  <div class="order-2 md:order-1 relative flex flex-col bg-white border border-border-light rounded-xl p-6 hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
-    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-white border border-border-light text-text-secondary text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1 shadow-sm">
-      <span class="material-symbols-outlined text-base text-slate-400">emoji_events</span> 2nd
+  <div class="order-2 md:order-1 relative flex flex-col bg-surface dark:bg-surface-dark border border-border-light dark:border-border-light-dark rounded-xl p-6 hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
+    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-surface dark:bg-surface-dark border border-border-light dark:border-border-light-dark text-text-secondary dark:text-text-secondary-dark text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1 shadow-sm">
+      <span class="material-symbols-outlined text-base text-slate-400 dark:text-slate-500">emoji_events</span> 2nd
       Place
     </div>
     <div class="flex flex-col items-center text-center gap-4 mt-2">
       <div class="relative">
-        <div class="w-20 h-20 rounded-full p-1 border-2 border-slate-100">
+        <div class="w-20 h-20 rounded-full p-1 border-2 border-slate-100 dark:border-slate-800">
           {member.avatar_url ? (
             <div
               class="w-full h-full rounded-full bg-cover bg-center"
@@ -35,18 +35,18 @@ const SecondPlace: FC<{ member: RankedUser }> = ({ member }) => (
             <Initials name={member.name} size="w-full h-full" />
           )}
         </div>
-        <div class="absolute -bottom-1 -right-1 bg-white rounded-full p-1 shadow-sm">
-          <span class="material-symbols-outlined text-blue-500 text-xl">verified</span>
+        <div class="absolute -bottom-1 -right-1 bg-surface dark:bg-surface-dark rounded-full p-1 shadow-sm">
+          <span class="material-symbols-outlined text-blue-500 dark:text-blue-400 text-xl">verified</span>
         </div>
       </div>
       <div>
-        <h3 class="text-text-main text-lg font-bold">{member.name}</h3>
-        <p class="text-text-secondary text-sm">{member.juz_completed} Juz Completed</p>
+        <h3 class="text-text-main dark:text-text-main-dark text-lg font-bold">{member.name}</h3>
+        <p class="text-text-secondary dark:text-text-secondary-dark text-sm">{member.juz_completed} Juz Completed</p>
       </div>
-      <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
-        <div class="bg-slate-400 h-2.5 rounded-full" style={`width: ${member.progress_percent}%`} />
+      <div class="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2.5 overflow-hidden">
+        <div class="bg-slate-400 dark:bg-slate-500 h-2.5 rounded-full" style={`width: ${member.progress_percent}%`} />
       </div>
-      <div class="flex items-center justify-between w-full text-xs text-text-secondary font-medium">
+      <div class="flex items-center justify-between w-full text-xs text-text-secondary dark:text-text-secondary-dark font-medium">
         <span>{member.progress_percent}% Progress</span>
         {member.trend > 0 && (
           <span class="flex items-center gap-1 text-primary">
@@ -59,7 +59,7 @@ const SecondPlace: FC<{ member: RankedUser }> = ({ member }) => (
 );
 
 const FirstPlace: FC<{ member: RankedUser }> = ({ member }) => (
-  <div class="order-1 md:order-2 relative flex flex-col bg-white border-2 border-primary/20 rounded-xl p-6 shadow-xl shadow-emerald-100 transform md:-translate-y-4 hover:shadow-2xl transition-all duration-300">
+  <div class="order-1 md:order-2 relative flex flex-col bg-surface dark:bg-surface-dark border-2 border-primary/20 rounded-xl p-6 shadow-xl dark:shadow-none transform md:-translate-y-4 hover:shadow-2xl transition-all duration-300">
     <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-primary text-white text-sm font-bold px-4 py-1.5 rounded-full flex items-center gap-1 shadow-lg">
       <span class="material-symbols-outlined text-lg">workspace_premium</span> 1st Place
     </div>
@@ -75,20 +75,20 @@ const FirstPlace: FC<{ member: RankedUser }> = ({ member }) => (
             <Initials name={member.name} size="w-full h-full" />
           )}
         </div>
-        <div class="absolute -bottom-2 -right-2 bg-white rounded-full p-1.5 border border-primary shadow-sm">
+        <div class="absolute -bottom-2 -right-2 bg-surface dark:bg-surface-dark rounded-full p-1.5 border border-primary shadow-sm">
           <span class="material-symbols-outlined text-orange-500 text-xl">
             local_fire_department
           </span>
         </div>
       </div>
       <div>
-        <h3 class="text-text-main text-xl font-bold">{member.name}</h3>
-        <p class="text-primary-dark font-semibold text-sm">
+        <h3 class="text-text-main dark:text-text-main-dark text-xl font-bold">{member.name}</h3>
+        <p class="text-primary-dark dark:text-primary font-semibold text-sm">
           {member.juz_completed === 30 ? "Hafiz \u2022 " : ""}
           {member.juz_completed} Juz Completed
         </p>
       </div>
-      <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden border border-slate-200">
+      <div class="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-3 overflow-hidden border border-slate-200 dark:border-slate-700">
         <div
           class="bg-primary h-3 rounded-full relative overflow-hidden"
           style={`width: ${member.progress_percent}%`}
@@ -101,10 +101,10 @@ const FirstPlace: FC<{ member: RankedUser }> = ({ member }) => (
       <div class="flex items-center justify-between w-full text-xs font-semibold">
         <span class="text-primary">{member.progress_percent}% Progress</span>
         {member.juz_completed === 30 ? (
-          <span class="text-text-secondary">Khatam Completed</span>
+          <span class="text-text-secondary dark:text-text-secondary-dark">Khatam Completed</span>
         ) : (
           member.trend > 0 && (
-            <span class="text-text-secondary">+{member.trend} Ayah this week</span>
+            <span class="text-text-secondary dark:text-text-secondary-dark">+{member.trend} Ayah this week</span>
           )
         )}
       </div>
@@ -113,14 +113,14 @@ const FirstPlace: FC<{ member: RankedUser }> = ({ member }) => (
 );
 
 const ThirdPlace: FC<{ member: RankedUser }> = ({ member }) => (
-  <div class="order-3 relative flex flex-col bg-white border border-border-light rounded-xl p-6 hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
-    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-white border border-border-light text-text-secondary text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1 shadow-sm">
-      <span class="material-symbols-outlined text-base text-amber-700">emoji_events</span> 3rd
+  <div class="order-3 relative flex flex-col bg-surface dark:bg-surface-dark border border-border-light dark:border-border-light-dark rounded-xl p-6 hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
+    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-surface dark:bg-surface-dark border border-border-light dark:border-border-light-dark text-text-secondary dark:text-text-secondary-dark text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1 shadow-sm">
+      <span class="material-symbols-outlined text-base text-amber-700 dark:text-amber-500">emoji_events</span> 3rd
       Place
     </div>
     <div class="flex flex-col items-center text-center gap-4 mt-2">
       <div class="relative">
-        <div class="w-20 h-20 rounded-full p-1 border-2 border-amber-100">
+        <div class="w-20 h-20 rounded-full p-1 border-2 border-amber-100 dark:border-amber-900/50">
           {member.avatar_url ? (
             <div
               class="w-full h-full rounded-full bg-cover bg-center"
@@ -132,16 +132,16 @@ const ThirdPlace: FC<{ member: RankedUser }> = ({ member }) => (
         </div>
       </div>
       <div>
-        <h3 class="text-text-main text-lg font-bold">{member.name}</h3>
-        <p class="text-text-secondary text-sm">{member.juz_completed} Juz Completed</p>
+        <h3 class="text-text-main dark:text-text-main-dark text-lg font-bold">{member.name}</h3>
+        <p class="text-text-secondary dark:text-text-secondary-dark text-sm">{member.juz_completed} Juz Completed</p>
       </div>
-      <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+      <div class="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2.5 overflow-hidden">
         <div
-          class="bg-amber-600/70 h-2.5 rounded-full"
+          class="bg-amber-600/70 dark:bg-amber-600/50 h-2.5 rounded-full"
           style={`width: ${member.progress_percent}%`}
         />
       </div>
-      <div class="flex items-center justify-between w-full text-xs text-text-secondary font-medium">
+      <div class="flex items-center justify-between w-full text-xs text-text-secondary dark:text-text-secondary-dark font-medium">
         <span>{member.progress_percent}% Progress</span>
         {member.trend > 0 && (
           <span class="flex items-center gap-1 text-primary">
@@ -156,7 +156,7 @@ const ThirdPlace: FC<{ member: RankedUser }> = ({ member }) => (
 export const TopThreeCards: FC<{ topThree: RankedUser[] }> = ({ topThree }) => {
   if (topThree.length === 0) {
     return (
-      <div class="w-full text-center py-12 text-text-secondary">
+      <div class="w-full text-center py-12 text-text-secondary dark:text-text-secondary-dark">
         <span class="material-symbols-outlined text-4xl mb-2">group</span>
         <p>No members yet. Be the first to submit progress!</p>
       </div>
