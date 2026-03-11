@@ -80,7 +80,7 @@ app.notFound((c) => {
   );
 });
 
-const port = parseInt(process.env.PORT || "3000", 10);
+const port = parseInt(process.env.PORT || "3333", 10);
 console.log(`${APP_NAME} running at http://localhost:${port}`);
 
 export default {

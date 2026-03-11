@@ -7,7 +7,7 @@ export const LoginPage: FC<{ error?: string }> = ({ error }) => {
     <Layout title={`Sign In - ${APP_NAME}`}>
       <div class="flex-1 flex items-center justify-center px-4">
         <div class="w-full max-w-md">
-          <div class="bg-white border border-border-light rounded-2xl p-8 shadow-lg text-center">
+          <div class="bg-surface dark:bg-surface-dark border border-border-light dark:border-border-light-dark rounded-2xl p-8 shadow-lg text-center">
             <div class="size-16 text-primary mx-auto mb-6">
               <svg class="w-full h-full" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -16,22 +16,22 @@ export const LoginPage: FC<{ error?: string }> = ({ error }) => {
                 />
               </svg>
             </div>
-            <h1 class="text-text-main text-2xl font-black tracking-tight mb-2">
+            <h1 class="text-text-main dark:text-text-main-dark text-2xl font-black tracking-tight mb-2">
               {APP_NAME}
             </h1>
-            <p class="text-text-secondary text-sm mb-8">
+            <p class="text-text-secondary dark:text-text-secondary-dark text-sm mb-8">
               Track your Quran memorization progress and stay motivated with your community during Ramadan.
             </p>
 
             {error && (
-              <div class="bg-red-50 text-red-600 text-sm px-4 py-3 rounded-lg mb-6 border border-red-200">
+              <div class="bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 text-sm px-4 py-3 rounded-lg mb-6 border border-red-200 dark:border-red-800/50">
                 Authentication failed. Please try again.
               </div>
             )}
 
             <a
               href="/auth/google"
-              class="flex items-center justify-center gap-3 w-full px-6 py-3 bg-white border-2 border-border-light rounded-xl hover:bg-slate-50 hover:border-slate-300 transition-all text-text-main font-semibold text-sm shadow-sm"
+              class="flex items-center justify-center gap-3 w-full px-6 py-3 bg-surface dark:bg-surface-dark border-2 border-border-light dark:border-border-light-dark rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600 transition-all text-text-main dark:text-text-main-dark font-semibold text-sm shadow-sm"
             >
               <svg class="w-5 h-5" viewBox="0 0 24 24">
                 <path
@@ -54,13 +54,13 @@ export const LoginPage: FC<{ error?: string }> = ({ error }) => {
               Sign in with Google
             </a>
 
-            <p class="text-text-secondary text-xs mt-6">
+            <p class="text-text-secondary dark:text-text-secondary-dark text-xs mt-6">
               New members need admin approval before accessing the leaderboard.
             </p>
           </div>
 
           <div class="text-center mt-6">
-            <p class="text-text-secondary text-xs">
+            <p class="text-text-secondary dark:text-text-secondary-dark text-xs">
               Goal: Memorize 30 Juz within Ramadan
             </p>
           </div>

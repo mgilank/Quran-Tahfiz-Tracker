@@ -5,6 +5,7 @@ import { getSurah } from "../data/quran-meta.ts";
 export interface QuranAyah {
   number: number;
   text: string;
+  translation?: string;
 }
 
 type SurahFileShape = {

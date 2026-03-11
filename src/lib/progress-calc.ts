@@ -188,6 +188,20 @@ export function getRankedMembers(params: {
     const location = getCurrentLocation(entries);
     const trend = calculateTrend(u.id);
 
+    // Get all in-progress surahs (not completed)
+    const inProgress = entries
+      .filter((e) => !e.completed && e.last_ayah > 0)
+      .map((e) => {
+        const s = getSurah(e.surah_number);
+        return {
+          number: e.surah_number,
+          name: s?.name || `Surah ${e.surah_number}`,
+          last_ayah: e.last_ayah,
+          total_ayahs: s?.totalAyahs || 0,
+        };
+      })
+      .sort((a, b) => a.number - b.number);
+
     members.push({
       id: u.id,
       name: u.name,
@@ -200,6 +214,7 @@ export function getRankedMembers(params: {
       current_surah_number: location.surahNumber,
       current_ayah: location.ayah,
       current_juz: location.juz,
+      in_progress_surahs: inProgress,
       trend,
       streak_days: 0,
       joined_label: getJoinedLabel(u.created_at),

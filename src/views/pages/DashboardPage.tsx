@@ -29,10 +29,10 @@ export const DashboardPage: FC<{
         {/* Welcome */}
         <div class="w-full flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
           <div>
-            <h1 class="text-text-main text-3xl font-black leading-tight tracking-[-0.033em]">
+            <h1 class="text-text-main dark:text-text-main-dark text-3xl font-black leading-tight tracking-[-0.033em]">
               Assalamu'alaikum, {user.name.split(" ")[0]}!
             </h1>
-            <p class="text-text-secondary text-base">Your Quran memorization journey at a glance.</p>
+            <p class="text-text-secondary dark:text-text-secondary-dark text-base">Your Quran memorization journey at a glance.</p>
           </div>
           <a
             href="/progress"
@@ -45,59 +45,59 @@ export const DashboardPage: FC<{
 
         {/* Stats grid */}
         <div class="w-full grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
-          <div class="bg-white border border-border-light rounded-xl p-5 text-center">
-            <p class="text-text-secondary text-xs font-medium mb-1">Your Rank</p>
+          <div class="bg-surface dark:bg-surface-dark border border-border-light dark:border-border-light-dark rounded-xl p-5 text-center shadow-sm">
+            <p class="text-text-secondary dark:text-text-secondary-dark text-xs font-medium mb-1">Your Rank</p>
             <p class="text-3xl font-black text-primary">#{rank?.rank || "-"}</p>
           </div>
-          <div class="bg-white border border-border-light rounded-xl p-5 text-center">
-            <p class="text-text-secondary text-xs font-medium mb-1">Juz Completed</p>
-            <p class="text-3xl font-black text-text-main">{juzCompleted}/30</p>
+          <div class="bg-surface dark:bg-surface-dark border border-border-light dark:border-border-light-dark rounded-xl p-5 text-center shadow-sm">
+            <p class="text-text-secondary dark:text-text-secondary-dark text-xs font-medium mb-1">Juz Completed</p>
+            <p class="text-3xl font-black text-text-main dark:text-text-main-dark">{juzCompleted}/30</p>
           </div>
-          <div class="bg-white border border-border-light rounded-xl p-5 text-center">
-            <p class="text-text-secondary text-xs font-medium mb-1">Progress</p>
-            <p class="text-3xl font-black text-text-main">{progressPercent}%</p>
+          <div class="bg-surface dark:bg-surface-dark border border-border-light dark:border-border-light-dark rounded-xl p-5 text-center shadow-sm">
+            <p class="text-text-secondary dark:text-text-secondary-dark text-xs font-medium mb-1">Progress</p>
+            <p class="text-3xl font-black text-text-main dark:text-text-main-dark">{progressPercent}%</p>
           </div>
-          <div class="bg-white border border-border-light rounded-xl p-5 text-center">
-            <p class="text-text-secondary text-xs font-medium mb-1">Ayahs</p>
-            <p class="text-3xl font-black text-text-main">{totalMemorized.toLocaleString()}</p>
+          <div class="bg-surface dark:bg-surface-dark border border-border-light dark:border-border-light-dark rounded-xl p-5 text-center shadow-sm">
+            <p class="text-text-secondary dark:text-text-secondary-dark text-xs font-medium mb-1">Ayahs</p>
+            <p class="text-3xl font-black text-text-main dark:text-text-main-dark">{totalMemorized.toLocaleString()}</p>
           </div>
-          <div class="bg-white border border-border-light rounded-xl p-5 text-center col-span-2 md:col-span-1">
-            <p class="text-text-secondary text-xs font-medium mb-1">Weekly Trend</p>
+          <div class="bg-surface dark:bg-surface-dark border border-border-light dark:border-border-light-dark rounded-xl p-5 text-center shadow-sm col-span-2 md:col-span-1">
+            <p class="text-text-secondary dark:text-text-secondary-dark text-xs font-medium mb-1">Weekly Trend</p>
             <p class="text-3xl font-black text-primary">+{rank?.trend || 0}</p>
           </div>
         </div>
 
         {/* Current location */}
         {currentLocation.juz > 0 && (
-          <div class="w-full bg-white border-2 border-primary/20 rounded-xl p-6 mb-8 shadow-sm">
+          <div class="w-full bg-surface dark:bg-surface-dark border-2 border-primary/20 dark:border-primary/30 rounded-xl p-6 mb-8 shadow-sm">
             <div class="flex items-center gap-3 mb-3">
               <span class="material-symbols-outlined text-primary text-2xl">my_location</span>
-              <h2 class="text-text-main text-lg font-bold">Current Location</h2>
+              <h2 class="text-text-main dark:text-text-main-dark text-lg font-bold">Current Location</h2>
             </div>
             <div class="flex flex-wrap gap-6 text-sm">
               <div>
-                <span class="text-text-secondary">Juz</span>
-                <p class="text-text-main font-bold text-lg">{currentLocation.juz}</p>
+                <span class="text-text-secondary dark:text-text-secondary-dark">Juz</span>
+                <p class="text-text-main dark:text-text-main-dark font-bold text-lg">{currentLocation.juz}</p>
               </div>
               <div>
-                <span class="text-text-secondary">Surah</span>
-                <p class="text-text-main font-bold text-lg">{currentLocation.surahName}</p>
+                <span class="text-text-secondary dark:text-text-secondary-dark">Surah</span>
+                <p class="text-text-main dark:text-text-main-dark font-bold text-lg">{currentLocation.surahName}</p>
               </div>
               <div>
-                <span class="text-text-secondary">Ayah</span>
-                <p class="text-text-main font-bold text-lg">{currentLocation.ayah}</p>
+                <span class="text-text-secondary dark:text-text-secondary-dark">Ayah</span>
+                <p class="text-text-main dark:text-text-main-dark font-bold text-lg">{currentLocation.ayah}</p>
               </div>
             </div>
           </div>
         )}
 
         {/* Overall progress bar */}
-        <div class="w-full bg-white border border-border-light rounded-xl p-6 mb-8 shadow-sm">
-          <h2 class="text-text-main text-lg font-bold mb-4 flex items-center gap-2">
+        <div class="w-full bg-surface dark:bg-surface-dark border border-border-light dark:border-border-light-dark rounded-xl p-6 mb-8 shadow-sm">
+          <h2 class="text-text-main dark:text-text-main-dark text-lg font-bold mb-4 flex items-center gap-2">
             <span class="material-symbols-outlined text-primary">bar_chart</span>
             Overall Progress to 30 Juz
           </h2>
-          <div class="w-full bg-slate-100 rounded-full h-4 overflow-hidden border border-slate-200 mb-2">
+          <div class="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-4 overflow-hidden border border-slate-200 dark:border-slate-700 mb-2">
             <div
               class="bg-primary h-4 rounded-full relative overflow-hidden transition-all duration-500"
               style={`width: ${progressPercent}%`}
@@ -109,15 +109,15 @@ export const DashboardPage: FC<{
               )}
             </div>
           </div>
-          <p class="text-text-secondary text-xs">
+          <p class="text-text-secondary dark:text-text-secondary-dark text-xs">
             {juzCompleted} of 30 Juz completed &bull; {totalMemorized.toLocaleString()} of 6,236
             total ayahs memorized
           </p>
         </div>
 
         {/* Juz grid */}
-        <div class="w-full bg-white border border-border-light rounded-xl p-6 shadow-sm">
-          <h2 class="text-text-main text-lg font-bold mb-4 flex items-center gap-2">
+        <div class="w-full bg-surface dark:bg-surface-dark border border-border-light dark:border-border-light-dark rounded-xl p-6 shadow-sm">
+          <h2 class="text-text-main dark:text-text-main-dark text-lg font-bold mb-4 flex items-center gap-2">
             <span class="material-symbols-outlined text-primary">grid_view</span>
             Juz Overview
           </h2>
@@ -155,8 +155,8 @@ export const DashboardPage: FC<{
                   class={`aspect-square rounded-lg flex items-center justify-center text-sm font-bold border transition-all ${status === "complete"
                       ? "bg-primary text-white border-primary shadow-sm"
                       : status === "partial"
-                        ? "bg-primary/10 text-primary border-primary/30"
-                        : "bg-slate-50 text-text-secondary border-border-light"
+                        ? "bg-primary/10 text-primary border-primary/30 dark:bg-primary/20"
+                        : "bg-slate-50 dark:bg-slate-800/50 text-text-secondary dark:text-text-secondary-dark border-border-light dark:border-border-light-dark"
                     }`}
                   title={`Juz ${juz.juzNumber}`}
                 >
@@ -165,17 +165,17 @@ export const DashboardPage: FC<{
               );
             })}
           </div>
-          <div class="flex items-center gap-4 mt-4 text-xs text-text-secondary">
+          <div class="flex items-center gap-4 mt-4 text-xs text-text-secondary dark:text-text-secondary-dark">
             <div class="flex items-center gap-1.5">
               <div class="w-3 h-3 rounded bg-primary" />
               <span>Completed</span>
             </div>
             <div class="flex items-center gap-1.5">
-              <div class="w-3 h-3 rounded bg-primary/10 border border-primary/30" />
+              <div class="w-3 h-3 rounded bg-primary/10 dark:bg-primary/20 border border-primary/30" />
               <span>In Progress</span>
             </div>
             <div class="flex items-center gap-1.5">
-              <div class="w-3 h-3 rounded bg-slate-50 border border-border-light" />
+              <div class="w-3 h-3 rounded bg-slate-50 dark:bg-slate-800/50 border border-border-light dark:border-border-light-dark" />
               <span>Not Started</span>
             </div>
           </div>

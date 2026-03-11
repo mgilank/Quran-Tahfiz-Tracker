@@ -56,6 +56,7 @@ export interface RankedUser {
   current_surah_number: number;
   current_ayah: number;
   current_juz: number;
+  in_progress_surahs: { number: number; name: string; last_ayah: number; total_ayahs: number }[];
   trend: number;
   streak_days: number;
   joined_label: string;
