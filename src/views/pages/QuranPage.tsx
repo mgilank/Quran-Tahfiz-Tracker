@@ -211,55 +211,53 @@ export const QuranPage: FC<{
                       }`}
                     >
                       <div class="flex flex-col sm:flex-row sm:items-start gap-4">
-                        <div class="flex flex-row sm:flex-col items-center justify-between sm:justify-start gap-4 sm:gap-3 flex-shrink-0 w-full sm:w-auto mb-2 sm:mb-0 pb-3 sm:pb-0 border-b sm:border-b-0 border-border-light/50 dark:border-border-light-dark/50">
-                          <div class="flex items-center gap-3">
-                            <div class={`w-10 h-10 rounded-full text-sm font-black flex items-center justify-center transition-colors ${
-                              isBookmarked || isJumpTarget 
-                              ? "bg-primary text-white shadow-md" 
-                              : "bg-slate-100 dark:bg-slate-800 text-text-main dark:text-text-main-dark shadow-sm"
-                            }`}>
-                              {ayah.number}
-                            </div>
-                            
-                            <div class="flex flex-row sm:flex-col items-center gap-2">
-                              <form method="post" action="/quran" class="my-0">
-                                <input type="hidden" name="surah_number" value={selectedSurah.number.toString()} />
-                                <input type="hidden" name="ayah_number" value={ayah.number.toString()} />
-                                <button
-                                  type="submit"
-                                  title={isBookmarked ? "Remove bookmark" : "Bookmark this ayah"}
-                                  class={`p-2 rounded-full transition-all active:scale-90 shadow-sm group ${
-                                    isBookmarked 
-                                      ? "bg-primary text-white ring-2 ring-primary/20" 
-                                      : "bg-slate-100 dark:bg-slate-800 text-text-secondary dark:text-text-secondary-dark hover:bg-primary hover:text-white"
-                                  }`}
-                                >
-                                  <span class="material-symbols-outlined text-xl block transition-transform group-hover:scale-110">
-                                    {isBookmarked ? "bookmark_remove" : "bookmark"}
-                                  </span>
-                                </button>
-                              </form>
+                        <div class="flex flex-row sm:flex-col items-center justify-between sm:justify-start gap-4 sm:gap-5 flex-shrink-0 w-full sm:w-auto mb-2 sm:mb-0 pb-3 sm:pb-0 border-b sm:border-b-0 border-border-light/50 dark:border-border-light-dark/50">
+                          <div class={`w-10 h-10 rounded-full text-sm font-black flex items-center justify-center transition-colors ${
+                            isBookmarked || isJumpTarget 
+                            ? "bg-primary text-white shadow-md" 
+                            : "bg-slate-100 dark:bg-slate-800 text-text-main dark:text-text-main-dark shadow-sm"
+                          }`}>
+                            {ayah.number}
+                          </div>
+                          
+                          <div class="flex flex-row sm:flex-col items-center gap-2">
+                            <form method="post" action="/quran" class="my-0">
+                              <input type="hidden" name="surah_number" value={selectedSurah.number.toString()} />
+                              <input type="hidden" name="ayah_number" value={ayah.number.toString()} />
+                              <button
+                                type="submit"
+                                title={isBookmarked ? "Remove bookmark" : "Bookmark this ayah"}
+                                class={`p-2 rounded-full transition-all active:scale-90 shadow-sm group ${
+                                  isBookmarked 
+                                    ? "bg-primary text-white ring-2 ring-primary/20" 
+                                    : "bg-slate-100 dark:bg-slate-800 text-text-secondary dark:text-text-secondary-dark hover:bg-primary hover:text-white"
+                                }`}
+                              >
+                                <span class="material-symbols-outlined text-xl block transition-transform group-hover:scale-110">
+                                  {isBookmarked ? "bookmark_remove" : "bookmark"}
+                                </span>
+                              </button>
+                            </form>
 
-                              <form method="post" action="/progress" class="my-0">
-                                <input type="hidden" name="surah_number" value={selectedSurah.number.toString()} />
-                                <input type="hidden" name="last_ayah" value={ayah.number.toString()} />
-                                <input type="hidden" name="mode" value="set" />
-                                <button
-                                  type="submit"
-                                  title="Update progress to this ayah"
-                                  class="p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-text-secondary dark:text-text-secondary-dark hover:bg-emerald-500 hover:text-white transition-all active:scale-90 shadow-sm group"
-                                >
-                                  <span class="material-symbols-outlined text-xl block transition-transform group-hover:rotate-12">
-                                    task_alt
-                                  </span>
-                                </button>
-                              </form>
-                            </div>
+                            <form method="post" action="/progress" class="my-0">
+                              <input type="hidden" name="surah_number" value={selectedSurah.number.toString()} />
+                              <input type="hidden" name="last_ayah" value={ayah.number.toString()} />
+                              <input type="hidden" name="mode" value="set" />
+                              <button
+                                type="submit"
+                                title="Update progress to this ayah"
+                                class="p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-text-secondary dark:text-text-secondary-dark hover:bg-emerald-500 hover:text-white transition-all active:scale-90 shadow-sm group"
+                              >
+                                <span class="material-symbols-outlined text-xl block transition-transform group-hover:rotate-12">
+                                  task_alt
+                                </span>
+                              </button>
+                            </form>
                           </div>
 
                           {/* Member progress avatars */}
                           {usersHere.length > 0 && (
-                            <div class="flex flex-row sm:flex-col items-center gap-1.5 sm:mt-2">
+                            <div class="flex flex-row sm:flex-col items-center gap-1.5 sm:mt-1">
                               <div class="flex -space-x-2">
                                 {usersHere.slice(0, 3).map((p) => (
                                   <div class="relative group/avatar">
@@ -308,12 +306,12 @@ export const QuranPage: FC<{
                 })}
 
                 {/* Pagination controls */}
-                <div class="mt-8 pt-4 sm:pt-8 border-t border-border-light dark:border-border-light-dark sticky bottom-0 sm:static bg-surface/95 dark:bg-surface-dark/95 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none -mx-6 px-6 py-4 sm:p-0 z-30">
-                  <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <div class="flex items-center justify-center sm:justify-start gap-2 w-full sm:w-auto">
+                <div class="mt-8 pt-4 sm:pt-8 border-t border-border-light dark:border-border-light-dark sticky bottom-0 sm:static bg-surface/95 dark:bg-surface-dark/95 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none -mx-6 px-6 sm:px-8 py-4 sm:py-8 z-30">
+                  <div class="flex flex-wrap sm:flex-nowrap items-center justify-between gap-y-4 gap-x-2">
+                    <div class="w-[48%] sm:w-auto sm:flex-1 flex justify-start order-2 sm:order-1">
                       <a
                         href={`/quran?surah=${selectedSurah.number}&page=${currentPage - 1}`}
-                        class={`flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-lg text-sm font-bold transition-all ${
+                        class={`w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-6 py-2.5 rounded-lg text-sm font-bold transition-all ${
                           currentPage > 1
                             ? "bg-white dark:bg-slate-800 text-text-main dark:text-text-main-dark border border-border-light dark:border-border-light-dark hover:border-primary hover:text-primary shadow-sm"
                             : "bg-slate-50 dark:bg-slate-900/50 text-slate-400 dark:text-slate-600 border border-transparent cursor-not-allowed"
@@ -323,15 +321,22 @@ export const QuranPage: FC<{
                         <span class="material-symbols-outlined text-lg">chevron_left</span>
                         Prev
                       </a>
-                      
-                      <div class="flex items-center gap-1 px-4 py-2.5 bg-slate-50 dark:bg-slate-900/50 border border-border-light dark:border-border-light-dark rounded-lg">
+                    </div>
+                    
+                    <div class="w-full sm:w-auto sm:flex-1 flex flex-col items-center justify-center gap-1.5 order-1 sm:order-2">
+                      <div class="flex items-center gap-1 px-5 py-2 bg-slate-50 dark:bg-slate-900/50 border border-border-light dark:border-border-light-dark rounded-lg shadow-sm">
                         <span class="text-sm font-black text-text-main dark:text-text-main-dark">{currentPage}</span>
                         <span class="text-xs text-text-secondary dark:text-text-secondary-dark">of {totalPages}</span>
                       </div>
+                      <p class="hidden sm:block text-[11px] text-text-secondary dark:text-text-secondary-dark font-medium italic">
+                        Displaying {ayahs.length} ayahs per page
+                      </p>
+                    </div>
 
+                    <div class="w-[48%] sm:w-auto sm:flex-1 flex justify-end order-3">
                       <a
                         href={`/quran?surah=${selectedSurah.number}&page=${currentPage + 1}`}
-                        class={`flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-lg text-sm font-bold transition-all ${
+                        class={`w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-6 py-2.5 rounded-lg text-sm font-bold transition-all ${
                           currentPage < totalPages
                             ? "bg-white dark:bg-slate-800 text-text-main dark:text-text-main-dark border border-border-light dark:border-border-light-dark hover:border-primary hover:text-primary shadow-sm"
                             : "bg-slate-50 dark:bg-slate-900/50 text-slate-400 dark:text-slate-600 border border-transparent cursor-not-allowed"
@@ -342,10 +347,6 @@ export const QuranPage: FC<{
                         <span class="material-symbols-outlined text-lg">chevron_right</span>
                       </a>
                     </div>
-                    
-                    <p class="hidden sm:block text-xs text-text-secondary dark:text-text-secondary-dark font-medium italic">
-                      Displaying {ayahs.length} ayahs per page
-                    </p>
                   </div>
                 </div>
               </div>
